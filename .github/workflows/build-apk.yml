@@ -33,16 +33,11 @@ jobs:
 
       - name: Build Web App
         run: |
-          # Agar index.html client folder ke andar hai to root par copy karo
-          if [ -f client/index.html ] && [ ! -f index.html ]; then
-            cp client/index.html ./index.html
-          fi
-          npm run build || npx vite build client --outDir ../dist || npx vite build --outDir dist
-          mkdir -p dist
-          # Agar build client/dist me gayi ho toh use root dist me move karo
-          if [ -d client/dist ]; then
-            cp -r client/dist/* dist/
-          fi
+          # Client index.html ko root me direct link karo with proper path
+          cp client/index.html ./index.html
+          sed -i 's|src="/src/main.tsx"|src="/client/src/main.tsx"|g' index.html
+          # Frontend static build
+          npx vite build --outDir dist
 
       - name: Initialize Capacitor
         run: |
