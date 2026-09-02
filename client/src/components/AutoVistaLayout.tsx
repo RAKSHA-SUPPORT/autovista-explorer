@@ -1,51 +1,30 @@
 import React from "react";
-import { Link, useLocation } from "wouter";
+import { Link } from "wouter";
 
-export default function AutoVistaLayout({ children }: { children: React.ReactNode }) {
-  const [location] = useLocation();
-
+export const AutoVistaLayout = ({ children }: { children?: React.ReactNode }) => {
   return (
     <div className="min-h-screen bg-neutral-950 text-neutral-100 flex flex-col font-sans">
-      <header className="border-b border-neutral-800/80 bg-neutral-950/80 backdrop-blur-md sticky top-0 z-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-          <Link href="/" className="flex items-center gap-3 cursor-pointer">
-            <div className="w-8 h-8 rounded-full bg-lime-400 text-black flex items-center justify-center font-black text-sm">
-              AV
-            </div>
-            <div>
-              <span className="font-bold tracking-wider text-sm">AUTOVISTA</span>
-              <span className="block text-[9px] text-neutral-500 font-mono tracking-widest">100+ VEHICLES ARCHIVE</span>
-            </div>
+      <header className="sticky top-0 z-50 backdrop-blur-md bg-neutral-950/80 border-b border-neutral-800">
+        <div className="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
+          <Link href="/" className="text-xl font-bold tracking-wider bg-gradient-to-r from-red-500 to-amber-500 bg-clip-text text-transparent cursor-pointer">
+            AUTOVISTA
           </Link>
-
-          <nav className="flex items-center gap-6 text-xs font-mono uppercase tracking-wider text-neutral-400">
-            <Link href="/" className={`hover:text-lime-400 transition-colors ${location === "/" ? "text-lime-400" : ""}`}>
-              Archive
-            </Link>
-            <Link href="/catalog" className={`hover:text-lime-400 transition-colors ${location === "/catalog" ? "text-lime-400" : ""}`}>
-              Catalog
-            </Link>
-            <Link href="/compare" className={`hover:text-lime-400 transition-colors ${location === "/compare" ? "text-lime-400" : ""}`}>
-              Compare
-            </Link>
+          <nav className="flex items-center space-x-6 text-sm font-medium">
+            <Link href="/" className="text-neutral-300 hover:text-white transition-colors">Home</Link>
+            <Link href="/catalog" className="text-neutral-300 hover:text-white transition-colors">Catalog</Link>
+            <Link href="/makes" className="text-neutral-300 hover:text-white transition-colors">Makes</Link>
+            <Link href="/compare" className="text-neutral-300 hover:text-white transition-colors">Compare</Link>
           </nav>
         </div>
       </header>
-
-      <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <main className="flex-1 max-w-7xl w-full mx-auto p-4">
         {children}
       </main>
-
-      <footer className="border-t border-neutral-900 bg-neutral-950 py-10 mt-16">
-        <div className="max-w-7xl mx-auto px-4 text-center">
-          <p className="text-xs text-neutral-500 tracking-wider">
-            © 2026 AUTOVISTA INTELLIGENCE. ALL RIGHTS RESERVED.
-          </p>
-          <p className="mt-2 text-xs font-mono font-medium text-lime-400 tracking-widest uppercase">
-            Developed by R.A.K.S.H.A labs
-          </p>
-        </div>
+      <footer className="border-t border-neutral-800 py-6 text-center text-xs text-neutral-500">
+        AutoVista Performance Supercar Catalog
       </footer>
     </div>
   );
-}
+};
+
+export default AutoVistaLayout;
