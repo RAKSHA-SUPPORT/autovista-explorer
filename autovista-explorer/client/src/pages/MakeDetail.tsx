@@ -1,0 +1,15 @@
+import { ArrowLeft, ArrowUpRight, Building2, ChevronRight, Globe2 } from "lucide-react";
+import { Link, useRoute } from "wouter";
+import { AutoVistaLayout } from "@/components/AutoVistaLayout";
+import { VehicleCard } from "@/components/VehicleCard";
+import { trpc } from "@/lib/trpc";
+
+export default function MakeDetail() {
+  const [, params] = useRoute("/makes/:makeSlug");
+  const makeSlug = params?.makeSlug ?? "";
+  const { data: makes, isLoading: makesLoading } = trpc.catalog.makes.useQuery();
+  const make = makes?.find(item => item.slug === makeSlug);
+  const makeLabel = makesLoading ? "Loading manufacturer" : make?.name ?? "Unknown";
+  const { data: result, isLoading } = trpc.catalog.list.useQuery({ make: makeSlug, limit: 100 });
+  return <AutoVistaLayout><div className="mx-auto max-w-[1440px] px-5 py-10 lg:px-10 lg:py-16"><div className="mb-8 flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.16em] text-white/30"><Link href="/makes" className="flex items-center gap-2 hover:text-white"><ArrowLeft size={13} /> Directory</Link><ChevronRight size={12} /><span className="text-white/55">{makesLoading ? "Loading…" : make?.name ?? "Manufacturer"}</span></div><section className="grid gap-10 border-b border-white/[0.09] pb-12 lg:grid-cols-[1fr_0.8fr] lg:items-end"><div><div className="mb-5 flex items-center gap-3 font-mono text-[10px] uppercase tracking-[0.22em] text-[#c8f06a]"><Building2 size={13} /> Manufacturer file</div><h1 className="font-display text-7xl font-semibold leading-[0.84] tracking-[-0.08em] text-white md:text-9xl">{makeLabel}<span className="text-[#c8f06a]">.</span></h1></div><div><p className="max-w-md text-base leading-7 text-white/45">A model-family view into the machines indexed under this name. Follow each generation into its full technical dossier.</p><div className="mt-6 flex items-center gap-4 font-mono text-[10px] uppercase tracking-[0.16em] text-white/30"><span className="flex items-center gap-2"><Globe2 size={13} className="text-[#c8f06a]" /> {makesLoading || isLoading ? "—" : make?.count ?? result?.total ?? 0} archive entries</span><span className="h-3 w-px bg-white/20" /><span>Global</span></div></div></section><section className="mt-12"><div className="mb-5 flex items-center justify-between"><div><div className="font-mono text-[10px] uppercase tracking-[0.18em] text-[#c8f06a]">Model family / 01</div><h2 className="mt-2 font-display text-4xl font-semibold tracking-[-0.06em] text-white">Explore the range.</h2></div><Link href={`/cars?make=${makeSlug}`} className="hidden items-center gap-2 font-mono text-[10px] uppercase tracking-[0.14em] text-white/40 hover:text-[#c8f06a] sm:flex">All {makeLabel} cars <ArrowUpRight size={14} /></Link></div>{isLoading ? <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">{Array.from({ length: 3 }).map((_, index) => <div key={index} className="h-80 animate-pulse rounded-[22px] bg-white/[0.05]" />)}</div> : <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">{result?.cars.map(car => <VehicleCard key={car.slug} car={car} />)}</div>}</section></div></AutoVistaLayout>;
+}

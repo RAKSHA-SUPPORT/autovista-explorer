@@ -1,0 +1,79 @@
+# Project TODO
+
+- [x] Establish AutoVista visual system, typography, responsive layout, and navigation shell
+- [x] Create normalized catalog schema for makes, models, generations, trims, specifications, media, sources, 3D assets, components, favorites, and comparison sets
+- [x] Generate and apply database migration for catalog entities
+- [x] Add representative, source-labeled seed catalog data across body styles and powertrains
+- [x] Add typed public catalog procedures for search, filters, pagination, makes, detail pages, related vehicles, and comparisons
+- [x] Add authenticated favorite and comparison procedures
+- [x] Build premium automotive home/discovery page
+- [x] Build catalog search and filter experience with URL-synchronized state
+- [x] Build make/model browsing and vehicle detail experience
+- [x] Build responsive comparison experience
+- [x] Add 3D explorer dependency and implement camera, selection, explode/reassemble, isolate, reset, and fallback states
+- [x] Add a configured showcase vehicle for the interactive 3D explorer
+- [x] Build protected admin dashboard and catalog CRUD workflow
+- [ ] Add media/source/component metadata editing and catalog validation states
+- [x] Add CSV/JSON import and export workflow for catalog growth
+- [x] Add responsive, accessibility, reduced-motion, and WebGL fallback behavior
+- [x] Write and run Vitest coverage for core catalog, auth, favorites, comparison, and admin behavior
+- [x] Run typecheck, tests, and visual verification across desktop and mobile breakpoints
+- [ ] Save a final project checkpoint for delivery
+- [x] Add dedicated related-vehicles procedure and consume it on vehicle detail pages
+- [x] Implement authenticated comparison-set save/list/delete procedures
+- [x] Add dedicated make/model family browsing route and page
+- [x] Implement true 3D part isolation and hide/show behavior
+- [x] Attach a real configured showcase 3D asset or an application-owned procedural ready state
+- [x] Expand admin to full edit/delete catalog workflows
+- [ ] Add working media/source/component metadata editors and validation warnings
+- [x] Replace placeholder import/export actions with working CSV/JSON workflows
+- [x] Add explicit keyboard-accessible 3D controls and reduced-motion viewer behavior
+- [x] Add Vitest coverage for favorites and admin create/update/delete/import/export workflows
+- [x] Create a dedicated model-family browsing route/page
+- [x] Correct 3D isolate mode to show only the selected part and restore all reliably
+- [x] Expand admin editing beyond horsepower to summary and price fields
+- [x] Implement CSV import/export alongside JSON workflow
+- [x] Add success-path Vitest coverage for favorites toggle/list and admin create/update/import/export
+- [x] Replace naive CSV parsing with quoted-field-safe round-trip parsing
+- [x] Add a CSV round-trip test covering quoted commas, escaped quotes, and multiline summaries
+- [x] Add genuine database-backed success-path tests for favorites and admin procedures using a mocked working DB
+- [x] Add mocked working-database success-path tests for admin create, import, and export procedures
+- [x] Audit current project files, git state, logs, and managed synchronization metadata for the checkpoint failure
+- [x] Repair the manufacturer endpoint and asynchronous family-page loading behavior without destructive database changes
+- [x] Re-run typecheck, Vitest, production build, and preview verification after repair
+- [ ] Save a successful managed checkpoint and deliver its version identifier
+- [x] Audit the attached AutoVista Explorer zip and compare it with the active workspace
+- [x] Verify the attached website source matches the active workspace; no overwrite was required
+- [x] Verify no restore or dependency issues exist after package comparison
+- [x] Run typecheck, tests, production build, and desktop/mobile preview verification
+- [x] Deliver the restored website preview and checkpoint status
+- [x] Replace procedural geometric car parts with a free, license-compatible photorealistic sports sedan GLTF asset
+- [x] Document the selected GLB/GLTF source, license, attribution, and asset URL
+- [x] Load the asset with GLTFLoader and map separated meshes for wheels, hood, doors, engine, chassis, and body using the verified export grouping plus stable classification
+- [x] Add studio HDR/area lighting, metallic car materials, contact shadows, and a reflective floor
+- [x] Implement smooth spring/eased explode animation for wheels, doors, hood, and engine/chassis
+- [x] Implement correct click EXPLODE and ISOLATE behavior for the real GLTF part groups
+- [x] Add model loading, error, and WebGL fallback states
+- [x] Prevent 3D labels and controls from overlapping on mobile breakpoints
+- [x] Add Vitest coverage for GLTF part mapping and explode/isolate state transitions
+- [x] Re-run typecheck, tests, build, and desktop/mobile screenshots; checkpoint remains a separate platform step
+- [x] Replace procedural 3D geometry with the uploaded/license-compatible realistic GLB sedan asset
+- [x] Implement smooth exploded animation for wheels, doors, hood, engine, chassis, and body groups
+- [x] Add footer credit: Developed by R.A.K.S.H.A labs
+- [x] Remove mobile overlap between headings, hotspot labels, and canvas controls
+- [x] Add deployment documentation for Vercel, Netlify, Render, and Manus hosting
+- [x] Verify package.json scripts, public asset handling, build output, and production readiness
+- [x] Run typecheck, tests, production build, desktop/mobile preview checks, and create updated export ZIP
+- [x] Audit vehicle detail hero images, titles, specs, and GLB identity for cross-vehicle mismatches
+- [x] Compute the loaded GLB bounding box and dynamically fit camera position and FOV on desktop and mobile
+- [x] Configure smooth orbit controls with bounded zoom and target centered on the fitted model
+- [x] Ensure dossier identity, hero image, specifications, and 3D model remain consistent; BMW showcase is now consistently labeled and imaged as M4, with the persisted DB row verified
+- [x] Add tests for camera-fit math and vehicle asset identity mapping, including enabled BMW M4 coverage
+- [x] Run typecheck, tests, build, and desktop/mobile detail-page verification
+- [x] Update stale catalog tests and labels that still assume the aligned BMW showcase is an M5
+- [x] Rename the BMW showcase route and internal links from the legacy M5 slug to an M4-consistent identifier
+- [x] Add regression coverage for matching BMW M4 slug, displayed model, hero image, and enabled GLB state
+- [x] Update the persisted BMW showcase trim slug to bmw-m4-g82-competition and verify DB-backed outputs
+- [x] Add DB-backed catalog regression coverage for the BMW M4 slug, model, hero image, and has3d state
+- [x] Verify home and catalog links no longer emit the legacy BMW M5 slug
+- [x] Verify live DB-backed home featured data and catalog list output emit the renamed BMW M4 slug after migration
